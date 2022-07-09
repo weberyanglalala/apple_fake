@@ -1,0 +1,179 @@
+[
+    {
+        "category": "iPhone 13 Pro",
+        "model": [
+            {
+                "title": "iPhone 13 Pro",
+                "price": 32900
+            },
+            {
+                "title": "iPhone 13 Pro Max",
+                "price": 36900
+            }
+        ],
+        "color": [
+            {
+                "name": "松嶺青色",
+                "hexcode": "#576856"
+            },
+            {
+                "name": "銀色",
+                "hexcode": "#f2f3ee"
+            },
+            {
+                "name": "金色",
+                "hexcode": "#f9e9d2"
+            },
+            {
+                "name": "石墨色",
+                "hexcode": "#605f5c"
+            },
+            {
+                "name": "天峰藍色",
+                "hexcode": "#acc4dc"
+            }
+        ],
+        "storage": [
+            {
+                "capacity": "128GB",
+                "addtionalPrice": 0
+            },
+            {
+                "ocapacity": "256GB",
+                "addtionalPrice": 3500
+            },
+            {
+                "ocapacity": "512Gb",
+                "addtionalPrice": 10500 
+            },
+            {
+                "ocapacity": "1TB",
+                "addtionalPrice": 17500
+            }
+        ],
+        "connectivity": [],
+        "personalize": [],
+        "accessory": [],
+        "chip":[],
+        "keyboard": [],
+        "preinstall": []
+    },
+    {
+        "category": "iPad Pro",
+        "model": [
+            {
+                "title": "11-inches",
+                "moniter": "Liquid Retina",
+                "price": 32900
+            },
+            {
+                "title": "12.9-inches",
+                "moniter": "Liquid Retina",
+                "price": 34900
+            }
+        ],
+        "color": [
+            {
+                "name": "太空灰色",
+                "hexcode": "#abaeb1"
+            },
+            {
+                "name": "銀色",
+                "hexcode": "#dddfde"
+            }
+        ],
+        "storage": [
+            {
+                "capacity": "128GB",
+                "addtionalPrice": 0
+            },
+            {
+                "ocapacity": "256GB",
+                "addtionalPrice": 3100
+            },
+            {
+                "ocapacity": "512GB",
+                "addtionalPrice": 8300
+            },
+            {
+                "ocapacity": "1TB",
+                "addtionalPrice": 21700
+            },
+            {
+                "ocapacity": "2TB",
+                "addtionalPrice": 34100
+            }
+        ],
+        "connectivity": [
+            {
+                "type": "Wi-Fi",
+                "addtionalPrice": 5000
+
+            },
+            {
+                "type": "Wi-Fi + Celluar",
+                "addtionalPrice": 5000
+            }
+        ],
+        "personalize": [
+            {
+                "type": "carve"
+            },
+            {
+                "type": "no-carve"
+            }
+
+        ],
+        "accessory": [],
+        "chip":[],
+        "keyboard": [],
+        "preinstall": []
+    },
+    {
+        "category": "Macbook Pro",
+        "model": [
+            {
+                "title": "16-inches",
+                "price": 74900
+            }
+        ],
+        "color": [],
+        "storage": [
+            {
+                "capacity": "512GB",
+                "addtionalPrice": 0
+            },
+            {
+                "ocapacity": "1TB",
+                "addtionalPrice": 6000
+            },
+            {
+                "ocapacity": "2TB",
+                "addtionalPrice": 18000
+            },
+            {
+                "ocapacity": "4TB",
+                "addtionalPrice": 36000
+            },
+            {
+                "ocapacity": "8TB",
+                "addtionalPrice": 72000
+            }
+        ],
+        "connectivity": [],
+        "personalize": [],
+        "accessory": [],
+        "chip":[],
+        "keyboard": [],
+        "preinstall": [
+            {
+                "sw": "Final Cut Pro",
+                "addtionalPrice": 9990
+            },
+            {
+                "sw": "Logic Pro",
+                "addtionalPrice": 6950
+            }
+        ]
+    }
+]
