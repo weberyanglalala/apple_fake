@@ -1,19 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap');
-body {
-  font-family: 'Noto Sans TC', sans-serif;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;500&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
 .header {
   background-color: #3a3a3a;
   line-height: 45px;
 }
+
 .header-wrap {
   width: 100%;
   color: #fff;
 }
+
 .header-wrap a {
   display: inline-block;
   color: #fff;
+  font-weight: 100;
 }
+
 @media screen and (max-width: 991px) {
   .header-wrap {
     display: flex;
@@ -21,32 +80,37 @@ body {
     align-items: center;
     position: relative;
   }
+
   .nav {
     position: absolute;
     top: 45px;
     left: 0;
     width: 100%;
-
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform .3s ease;
+    transition: transform 0.3s ease;
     background-color: #3a3a3a;
     overflow-y: scroll;
   }
+
   .nav::-webkit-scrollbar {
     width: 0;
   }
+
   .nav-active {
     transform: scaleY(1);
     height: 100vh;
   }
+
   .nav-toggle {
     cursor: pointer;
     margin-left: 15px;
   }
+
   .user-panel {
     margin-right: 15px;
   }
+
   .user-panel a:last-child {
     display: none;
   }
@@ -56,6 +120,7 @@ body {
     background-color: #3a3a3a;
     border-bottom: 1px solid #5e5b5b;
   }
+
   .nav-search-input {
     display: block;
     margin: 0 auto;
@@ -65,20 +130,38 @@ body {
     background-color: #5e5b5b;
     border-radius: 5px;
     color: #ccccd4;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
+
+  .nav-search-input::-moz-placeholder {
+    font-weight: 300;
+    opacity: 0.5;
+    font-size: 0.8rem;
+    color: #ccccd4;
+  }
+
+  .nav-search-input:-ms-input-placeholder {
+    font-weight: 300;
+    opacity: 0.5;
+    font-size: 0.8rem;
+    color: #ccccd4;
+  }
+
   .nav-search-input::placeholder {
     font-weight: 300;
     opacity: 0.5;
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: #ccccd4;
   }
+
   input.nav-search-input:focus {
     outline: none;
   }
+
   .nav-link-group {
     padding: 15px;
   }
+
   .nav-link {
     width: 100%;
     display: block;
@@ -86,9 +169,11 @@ body {
     font-size: 14px;
     border-bottom: 1px solid #5e5b5b;
   }
+
   .nav-link:last-child {
     border: none;
   }
+
   .search-icon {
     display: none;
   }
@@ -99,36 +184,45 @@ body {
     max-width: 992px;
     display: flex;
   }
+
   .nav-toggle {
     display: none;
   }
+
   .nav-search {
     display: none;
   }
+
   .logo {
     width: 10%;
     order: -1;
   }
+
   .logo a {
     padding: 0 1rem;
   }
+
   .nav {
     flex-grow: 1;
   }
+
   .nav-link-group {
     display: flex;
     justify-content: space-around;
   }
+
   .nav-link {
     text-decoration: none;
     padding: 0 1rem;
   }
+
   .user-panel {
     width: 20%;
     display: flex;
     justify-content: space-around;
   }
+
   .user-panel a {
     padding: 0 1rem;
   }
-}
+}/*# sourceMappingURL=style.css.map */
