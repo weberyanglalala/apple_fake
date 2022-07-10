@@ -155,28 +155,15 @@ optionProduct.querySelectorAll('.option-btn').forEach(element => {
 
     ChangePriceDisplay()
   })
-  element.addEventListener('touchstart', (event) => {
-    productModel = productList.find(item => item["model"] === event.currentTarget.innerHTML)['model']
-
-    ChangePriceDisplay()
-  })
 })
 optionColor.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
     productColor = event.currentTarget.innerText
     ChangePriceDisplay()
   })
-  element.addEventListener('touchstart', (event) => {
-    productColor = event.currentTarget.innerText
-    ChangePriceDisplay()
-  })
 })
 optionStorage.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
-    productStorage = event.currentTarget.id.slice(8, event.currentTarget.id.length)
-    ChangePriceDisplay()
-  })
-  element.addEventListener('touchstart', (event) => {
     productStorage = event.currentTarget.id.slice(8, event.currentTarget.id.length)
     ChangePriceDisplay()
   })
