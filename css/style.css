@@ -94,10 +94,7 @@ body {
     transform-origin: top;
     transition: transform 0.3s ease;
     background-color: #3a3a3a;
-    overflow-y: scroll;
-  }
-  .nav::-webkit-scrollbar {
-    width: 0;
+    overflow: hidden;
   }
   .nav-active {
     transform: scaleY(1);
@@ -293,7 +290,7 @@ body {
 }
 
 .section-customize {
-  padding: 0 15px;
+  padding: 0 30px;
 }
 
 .customize-header .customize-title {
@@ -312,22 +309,47 @@ body {
   text-decoration: underline;
 }
 
+.option {
+  margin-bottom: 2rem;
+}
 .option .option-title {
   font-size: 14px;
   margin-bottom: 1rem;
 }
 .option .option-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   border-bottom: 1px solid #ccc;
 }
 .option .option-btn {
+  width: 100%;
   cursor: pointer;
   border: 1px solid #ccc;
   padding: 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
 }
+.option .option-btn.w-50 {
+  width: calc(50% - 40px);
+}
 .option .option-btn-selected {
   border-color: #0071e3;
+}
+.option .option-color-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.option .option-color-display {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: red;
+  margin-bottom: 12px;
+}
+.option .option-color-name {
+  font-size: 10px;
 }
 
 @media screen and (min-width: 992px) {
@@ -338,6 +360,7 @@ body {
     width: 50%;
   }
   .main .section-customize {
+    padding-top: 5rem;
     width: 50%;
   }
 }/*# sourceMappingURL=style.css.map */

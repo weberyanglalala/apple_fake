@@ -37,10 +37,7 @@ body {
     transform-origin: top;
     transition: transform .3s ease;
     background-color: #3a3a3a;
-    overflow-y: scroll;
-  }
-  .nav::-webkit-scrollbar {
-    width: 0;
+    overflow: hidden;
   }
   .nav-active {
     transform: scaleY(1);

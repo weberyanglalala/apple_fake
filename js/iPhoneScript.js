@@ -1,3 +1,4 @@
+'use strict'
 const productList = [
   {
     "category": "iPhone 13 Pro",
@@ -112,7 +113,11 @@ const productList = [
     "preinstall": []
   }
 ]
-let mainProduct = productList.find(item => item["model"] === "iPhone 13 Pro")
+let productCategory = productList.find(item => item["model"] === "iPhone 13 Pro")
+let productURL = productList.find(item => item["model"] === "iPhone 13 Pro")['color'][0]['image']
+let productModel = productList.find(item => item["model"] === "iPhone 13 Pro")['model']
+let productColor = productList.find(item => item["model"] === "iPhone 13 Pro")['color'][0]['name']
+
 
 const productTitle = document.querySelector('.product-title')
 const productTitlePrice = document.querySelector('.product-title-price')
@@ -121,36 +126,41 @@ const model = document.querySelector('#main-product')
 const navToggle = document.querySelector('.nav-toggle')
 const mainNav = document.querySelector('#mainNav')
 const optionProduct = document.querySelector('#option-product')
+const optionColor = document.querySelector('#option-color')
+const mainImage = document.querySelector('#main-image')
 
-DisplayOptions(optionProduct, GenerateOptions(productList, 'model'))
+DisplayModels(optionProduct, GenerateOptions(productList, 'model'))
+OptionSetting(optionProduct)
+
+DisplayColors(optionColor, GenerateOptions(productCategory['color'], 'name'), GenerateOptions(productCategory['color'], 'hexcode'))
+OptionSetting(optionColor)
+
 ChangePriceDisplay()
-const optionBtns = document.querySelectorAll('.option-btn')
+
 navToggle.addEventListener('click', () => {
   mainNav.classList.toggle("nav-active")
 })
-optionBtns.forEach(option => {
-  option.addEventListener('click', () => {
-    const currentSelectOption = document.querySelector('.option-btn-selected')
-    if (currentSelectOption && currentSelectOption !== option) {
-      currentSelectOption.classList.toggle("option-btn-selected")
-      GetAllSiblings(currentSelectOption).forEach(option => {
-        option.classList.remove("option-btn-selected")
-      })
-    }
-    option.classList.add("option-btn-selected")
+optionProduct.childNodes.forEach(element => {
+  element.addEventListener('click', (event) => {
+    productModel = productList.find(item => item["model"] === event.target.innerHTML)['model']
+    ChangePriceDisplay()
   })
 })
 
-optionProduct.childNodes.forEach(element => {
+optionColor.childNodes.forEach(element => {
   element.addEventListener('click', (event) => {
-    mainProduct = productList.find(item => item["model"] === `${event.target.innerText}`)
+    productColor = event.target.innerText
     ChangePriceDisplay()
   })
 })
 function ChangePriceDisplay() {
-  SetElementText(productTitle, mainProduct['model'])
-  SetElementText(productTitlePrice, `NT$ ${mainProduct['price']} 起`)
-  SetElementText(customizeTitle, `購買 ${mainProduct['model']}`)
+  const productSelected = productList.find(item => item["model"] === productModel)['color']
+  productURL = productSelected.find(color => color.name === productColor)['image']
+  console.log(productURL)
+  SetElementText(productTitle, productCategory['model'])
+  SetElementText(productTitlePrice, `NT$ ${productCategory['price']} 起`)
+  SetElementText(customizeTitle, `購買 ${productCategory['model']}`)
+  mainImage.src = productURL
 }
 function SetElementText(element, text) {
   element['innerText'] = text
@@ -162,12 +172,23 @@ function GenerateOptions(list, prop) {
   })
   return options
 }
-function DisplayOptions(element, options) {
+function DisplayModels(element, options) {
   options.forEach(option => {
     const li = document.createElement('li')
     li.classList.add("option-btn")
     li.innerText = option
     element.appendChild(li)
+  })
+}
+function DisplayColors(element, colorNames, colorHexs) {
+  colorNames.forEach((name, index) => {
+    element.innerHTML +=
+    `<li class="option-btn w-50">
+        <div class="option-color-wrap">
+          <div class="option-color-display" style="background-color: ${colorHexs[index]};"></div>
+          <div class="option-color-name">${name}</div>
+        </div>
+      </li>`
   })
 }
 function GetAllSiblings(element) {
@@ -180,4 +201,19 @@ function GetAllSiblings(element) {
     }
   } while (sibling = sibling.nextElementSibling)
   return siblings
+}
+function OptionSetting(element) {
+  const options = element.querySelectorAll('.option-btn')
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      const currentSelectOption = element.querySelector('.option-btn-selected')
+      if (currentSelectOption && currentSelectOption !== option) {
+        currentSelectOption.classList.toggle("option-btn-selected")
+        GetAllSiblings(currentSelectOption).forEach(option => {
+          option.classList.remove("option-btn-selected")
+        })
+      }
+      option.classList.add("option-btn-selected")
+    })
+  })
 }

@@ -83,7 +83,7 @@
   }
 }
 .section-customize {
-  padding: 0 15px;
+  padding: 0 30px;
 }
 .customize-header {
   .customize-title {
@@ -104,22 +104,45 @@
 }
 
 .option {
+  margin-bottom: 2rem;
   .option-title {
     font-size: 14px;
     margin-bottom: 1rem;
   }
   .option-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     border-bottom: 1px solid #ccc;
   }
   .option-btn {
+    width: 100%;
     cursor: pointer;
     border: 1px solid #ccc;
     padding: 1rem;
     border-radius: 5px;
     margin-bottom: 1rem;
   }
+  .option-btn.w-50 {
+    width: calc(50% - 40px);
+  }
   .option-btn-selected {
     border-color: #0071e3;
+  }
+  .option-color-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .option-color-display {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    margin-bottom: 12px;
+  }
+  .option-color-name {
+    font-size: 10px;
   }
 }
 @media screen and (min-width: 992px) {
@@ -129,6 +152,7 @@
       width: 50%;
     }
     .section-customize {
+      padding-top: 5rem;
       width: 50%;
     }
   }
