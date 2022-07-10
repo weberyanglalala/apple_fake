@@ -117,7 +117,7 @@ let productCategory = productList.find(item => item["model"] === "iPhone 13 Pro"
 let productURL = productList.find(item => item["model"] === "iPhone 13 Pro")['color'][0]['image']
 let productModel = productList.find(item => item["model"] === "iPhone 13 Pro")['model']
 let productColor = productList.find(item => item["model"] === "iPhone 13 Pro")['color'][0]['name']
-
+let productPrice = productList.find(item => item["model"] === productModel)['price']
 
 const productTitle = document.querySelector('.product-title')
 const productTitlePrice = document.querySelector('.product-title-price')
@@ -146,7 +146,6 @@ optionProduct.childNodes.forEach(element => {
     ChangePriceDisplay()
   })
 })
-
 optionColor.childNodes.forEach(element => {
   element.addEventListener('click', (event) => {
     productColor = event.target.innerText
@@ -156,10 +155,10 @@ optionColor.childNodes.forEach(element => {
 function ChangePriceDisplay() {
   const productSelected = productList.find(item => item["model"] === productModel)['color']
   productURL = productSelected.find(color => color.name === productColor)['image']
-  console.log(productURL)
-  SetElementText(productTitle, productCategory['model'])
-  SetElementText(productTitlePrice, `NT$ ${productCategory['price']} 起`)
-  SetElementText(customizeTitle, `購買 ${productCategory['model']}`)
+  productPrice = productList.find(item => item["model"] === productModel)['price']
+  SetElementText(productTitle, productModel)
+  SetElementText(productTitlePrice, `NT$ ${productPrice} 起`)
+  SetElementText(customizeTitle, `購買 ${productModel}`)
   mainImage.src = productURL
 }
 function SetElementText(element, text) {
