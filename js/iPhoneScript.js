@@ -37,15 +37,15 @@ const productList = [
         "addtionalPrice": 0
       },
       {
-        "ocapacity": "256GB",
+        "capacity": "256GB",
         "addtionalPrice": 3500
       },
       {
-        "ocapacity": "512Gb",
+        "capacity": "512GB",
         "addtionalPrice": 10500
       },
       {
-        "ocapacity": "1TB",
+        "capacity": "1TB",
         "addtionalPrice": 17500
       }
     ],
@@ -93,15 +93,15 @@ const productList = [
         "addtionalPrice": 0
       },
       {
-        "ocapacity": "256GB",
+        "capacity": "256GB",
         "addtionalPrice": 3500
       },
       {
-        "ocapacity": "512Gb",
+        "capacity": "512GB",
         "addtionalPrice": 10500
       },
       {
-        "ocapacity": "1TB",
+        "capacity": "1TB",
         "addtionalPrice": 17500
       }
     ],
@@ -118,6 +118,8 @@ let productURL = productList.find(item => item["model"] === "iPhone 13 Pro")['co
 let productModel = productList.find(item => item["model"] === "iPhone 13 Pro")['model']
 let productColor = productList.find(item => item["model"] === "iPhone 13 Pro")['color'][0]['name']
 let productPrice = productList.find(item => item["model"] === productModel)['price']
+let productStorage = productList.find(item => item["model"] === productModel)['storage'][0]['capacity']
+
 
 const productTitle = document.querySelector('.product-title')
 const productTitlePrice = document.querySelector('.product-title-price')
@@ -127,13 +129,20 @@ const navToggle = document.querySelector('.nav-toggle')
 const mainNav = document.querySelector('#mainNav')
 const optionProduct = document.querySelector('#option-product')
 const optionColor = document.querySelector('#option-color')
+const optionStorage = document.querySelector('#option-storage')
 const mainImage = document.querySelector('#main-image')
+
+
 
 DisplayModels(optionProduct, GenerateOptions(productList, 'model'))
 OptionSetting(optionProduct)
 
 DisplayColors(optionColor, GenerateOptions(productCategory['color'], 'name'), GenerateOptions(productCategory['color'], 'hexcode'))
 OptionSetting(optionColor)
+
+
+DisplayStorages(optionStorage, GenerateOptions(productCategory['storage'], 'capacity'), GenerateOptions(productCategory['storage'], 'addtionalPrice'))
+OptionSetting(optionStorage)
 
 ChangePriceDisplay()
 
@@ -143,6 +152,7 @@ navToggle.addEventListener('click', () => {
 optionProduct.childNodes.forEach(element => {
   element.addEventListener('click', (event) => {
     productModel = productList.find(item => item["model"] === event.target.innerHTML)['model']
+
     ChangePriceDisplay()
   })
 })
@@ -152,14 +162,24 @@ optionColor.childNodes.forEach(element => {
     ChangePriceDisplay()
   })
 })
+optionStorage.querySelectorAll('.option-btn').forEach(element => {
+  element.addEventListener('click', (event) => {
+    productStorage = event.currentTarget.id.slice(8, event.currentTarget.id.length)
+    ChangePriceDisplay()
+  })
+})
+
 function ChangePriceDisplay() {
   const productSelected = productList.find(item => item["model"] === productModel)['color']
   productURL = productSelected.find(color => color.name === productColor)['image']
   productPrice = productList.find(item => item["model"] === productModel)['price']
+  productPrice += productList.find(item => item["model"] === productModel)['storage'].find(item => item['capacity'] === productStorage)['addtionalPrice']
   SetElementText(productTitle, productModel)
   SetElementText(productTitlePrice, `NT$ ${productPrice} 起`)
   SetElementText(customizeTitle, `購買 ${productModel}`)
   mainImage.src = productURL
+  
+  ChangeStoragePrice()
 }
 function SetElementText(element, text) {
   element['innerText'] = text
@@ -182,12 +202,32 @@ function DisplayModels(element, options) {
 function DisplayColors(element, colorNames, colorHexs) {
   colorNames.forEach((name, index) => {
     element.innerHTML +=
-    `<li class="option-btn w-50">
+      `<li class="option-btn w-50">
         <div class="option-color-wrap">
           <div class="option-color-display" style="background-color: ${colorHexs[index]};"></div>
           <div class="option-color-name">${name}</div>
         </div>
       </li>`
+  })
+}
+function DisplayStorages(element, storages, addtionalPrices) {
+  element.innerHTML = ""
+  storages.forEach((item, index) => {
+    element.innerHTML +=
+      `<li class="option-btn w-50" id="storage-${item}">
+      <div class="option-storage-wrap">
+        <div class="option-storage-name">${item}</div>
+        <span class="option-storage-price">NT$${addtionalPrices[index] + productPrice}</span>
+      </div>
+    </li>`
+  })
+}
+function ChangeStoragePrice() {
+  const storagePrice = document.querySelectorAll('.option-storage-price')
+  const basicPrice = productList.find(item => item["model"] === productModel)['price']
+  let addtionalPrices = productList.find(item => item["model"] === productModel)['storage'].map(item => item.addtionalPrice)
+  storagePrice.forEach((price, index) => {
+    price.innerText = `NT${basicPrice + addtionalPrices[index]}`
   })
 }
 function GetAllSiblings(element) {

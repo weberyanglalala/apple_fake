@@ -144,6 +144,19 @@
   .option-color-name {
     font-size: 10px;
   }
+  .option-storage-wrap {
+    text-align: center;
+  }
+  .option-storage-name {
+    font-size: 24px;
+    margin-bottom: 8px;
+    span {
+      font-size: 14px;
+    }
+  }
+  .option-storage-price {
+    font-size: 10px;
+  }
 }
 @media screen and (min-width: 992px) {
   .main {
