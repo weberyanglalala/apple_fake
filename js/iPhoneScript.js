@@ -131,7 +131,7 @@ const optionProduct = document.querySelector('#option-product')
 const optionColor = document.querySelector('#option-color')
 const optionStorage = document.querySelector('#option-storage')
 const mainImage = document.querySelector('#main-image')
-
+const total = document.querySelector('#total')
 
 
 DisplayModels(optionProduct, GenerateOptions(productList, 'model'))
@@ -151,14 +151,14 @@ navToggle.addEventListener('click', () => {
 })
 optionProduct.childNodes.forEach(element => {
   element.addEventListener('click', (event) => {
-    productModel = productList.find(item => item["model"] === event.target.innerHTML)['model']
+    productModel = productList.find(item => item["model"] === event.currentTarget.innerHTML)['model']
 
     ChangePriceDisplay()
   })
 })
 optionColor.childNodes.forEach(element => {
   element.addEventListener('click', (event) => {
-    productColor = event.target.innerText
+    productColor = event.currentTarget.innerText
     ChangePriceDisplay()
   })
 })
@@ -177,8 +177,8 @@ function ChangePriceDisplay() {
   SetElementText(productTitle, productModel)
   SetElementText(productTitlePrice, `NT$ ${productPrice} 起`)
   SetElementText(customizeTitle, `購買 ${productModel}`)
+  SetElementText(total, `NT$ ${productPrice}`)
   mainImage.src = productURL
-  
   ChangeStoragePrice()
 }
 function SetElementText(element, text) {

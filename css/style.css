@@ -292,6 +292,9 @@ body {
 .section-customize {
   padding: 0 30px;
 }
+.section-customize .total {
+  font-size: 3rem;
+}
 
 .customize-header .customize-title {
   font-size: 2rem;
