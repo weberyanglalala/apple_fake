@@ -109,14 +109,29 @@
 .option {
   margin-bottom: 2rem;
   .option-title {
+    display: flex;
+    justify-content: space-between;
     font-size: 14px;
     margin-bottom: 1rem;
+  }
+  .option-title.closed {
+    font-size: 24px;
+    cursor: pointer;
+    span {
+      font-size: 14px;
+    }
+  }
+  .option-change {
+    cursor: pointer;
+    margin-right: 1rem;
+    color: #0071e3;
   }
   .option-btn-group {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    overflow: hidden;
   }
   .option-btn {
     width: 100%;

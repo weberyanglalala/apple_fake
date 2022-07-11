@@ -147,8 +147,9 @@ const optionColor = document.querySelector('#option-color')
 const optionStorage = document.querySelector('#option-storage')
 const mainImage = document.querySelector('#main-image')
 const total = document.querySelector('#total')
-
-
+//
+const optionTitles = document.querySelectorAll('.option-title')
+//
 DisplayModels(optionProduct, GenerateOptions(productList, 'model'))
 OptionSetting(optionProduct)
 
@@ -167,23 +168,45 @@ navToggle.addEventListener('click', () => {
 optionProduct.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
     productModel = productList.find(item => item["model"] === event.currentTarget.innerHTML)['model']
-
     CalculatePrice()
+    //
+    element.parentElement.style.maxHeight = 0
+    element.parentElement.previousElementSibling.innerHTML = `
+      ${productModel}<span class="option-change">變更</span></h2>`
+    element.parentElement.previousElementSibling.classList.add("closed")
+    //
   })
 })
 optionColor.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
     productColor = event.currentTarget.innerText
     CalculatePrice()
+    
+    element.parentElement.style.maxHeight = 0
+    element.parentElement.previousElementSibling.innerHTML = `
+      ${productColor}<span class="option-change">變更</span></h2>`
+    element.parentElement.previousElementSibling.classList.add("closed")
   })
 })
 optionStorage.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
     productStorage = event.currentTarget.id.slice(8, event.currentTarget.id.length)
     CalculatePrice()
+    
+    element.parentElement.style.maxHeight = 0
+    element.parentElement.previousElementSibling.innerHTML = `
+      ${productStorage}<span class="option-change">變更</span></h2>`
+    element.parentElement.previousElementSibling.classList.add("closed")
   })
 })
-
+optionTitles.forEach(item => {
+  item.addEventListener('click', () => {
+    if (item.classList.contains("closed")) {
+      item.nextElementSibling.style.maxHeight = item.nextElementSibling.scrollHeight + "px"
+      item.querySelector('span').innerText = ""
+    }
+  })
+})
 function CalculatePrice() {
   const productSelected = productList.find(item => item["model"] === productModel)
   productURL = productSelected['color'].find(color => color.name === productColor)['image']
