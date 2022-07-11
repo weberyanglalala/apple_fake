@@ -2,26 +2,19 @@
 const productList = [
   {
     "category": "iPad Pro",
-    "model": [
-      {
-        "title": "11-inches",
-        "moniter": "Liquid Retina",
-        "price": 32900
-      },
-      {
-        "title": "12.9-inches",
-        "moniter": "Liquid Retina",
-        "price": 34900
-      }
-    ],
+    "model": "11 吋 iPad Pro",
+    "moniter": "Liquid Retina",
+    "price": 24900,
     "color": [
       {
         "name": "太空灰色",
-        "hexcode": "#abaeb1"
+        "hexcode": "#abaeb1",
+        "image": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-11-select-cell-spacegray-202104_GEO_TW?wid=470&hei=556&fmt=p-jpg&qlt=95&.v=1617925790000"
       },
       {
         "name": "銀色",
-        "hexcode": "#dddfde"
+        "hexcode": "#dddfde",
+        "image": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-11-select-cell-silver-202104_GEO_TW?wid=470&hei=556&fmt=p-jpg&qlt=95&.v=1617912663000"
       }
     ],
     "storage": [
@@ -30,19 +23,19 @@ const productList = [
         "addtionalPrice": 0
       },
       {
-        "ocapacity": "256GB",
+        "capacity": "256GB",
         "addtionalPrice": 3100
       },
       {
-        "ocapacity": "512GB",
+        "capacity": "512GB",
         "addtionalPrice": 8300
       },
       {
-        "ocapacity": "1TB",
+        "capacity": "1TB",
         "addtionalPrice": 21700
       },
       {
-        "ocapacity": "2TB",
+        "capacity": "2TB",
         "addtionalPrice": 34100
       }
     ],
@@ -70,15 +63,78 @@ const productList = [
     "chip": [],
     "keyboard": [],
     "preinstall": []
+  },
+  {
+    "category": "iPad Pro",
+    "model": "12.9 吋 iPad Pro",
+    "moniter": "Liquid Retina",
+    "price": 34900,
+    "color": [
+      {
+        "name": "太空灰色",
+        "hexcode": "#abaeb1",
+        "image": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-12-select-cell-spacegray-202104_GEO_TW?wid=940&hei=1112&fmt=p-jpg&qlt=95&.v=1617920534000"
+      },
+      {
+        "name": "銀色",
+        "hexcode": "#dddfde",
+        "image": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-12-select-cell-silver-202104_GEO_TW?wid=940&hei=1112&fmt=p-jpg&qlt=95&.v=1617919669000"
+      }
+    ],
+    "storage": [
+      {
+        "capacity": "128GB",
+        "addtionalPrice": 0
+      },
+      {
+        "capacity": "256GB",
+        "addtionalPrice": 3100
+      },
+      {
+        "capacity": "512GB",
+        "addtionalPrice": 8300
+      },
+      {
+        "capacity": "1TB",
+        "addtionalPrice": 21700
+      },
+      {
+        "capacity": "2TB",
+        "addtionalPrice": 34100
+      }
+    ],
+    "connectivity": [
+      {
+        "type": "Wi-Fi",
+        "addtionalPrice": 5000
+
+      },
+      {
+        "type": "Wi-Fi + 行動網路",
+        "addtionalPrice": 5000
+      }
+    ],
+    "personalize": [
+      {
+        "type": "carve"
+      },
+      {
+        "type": "no-carve"
+      }
+
+    ],
+    "accessory": [],
+    "chip": [],
+    "keyboard": [],
+    "preinstall": []
   }
 ]
-let productCategory;
-let productURL;
-let productModel;
-let productColor;
-let productPrice;
-let productStorage;
-
+let productCategory = productList.find(item => item.category === "iPad Pro")
+let productURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-12-select-cell-spacegray-202104_GEO_TW?wid=940&hei=1112&fmt=p-jpg&qlt=95&.v=1617920534000"
+let productModel = "11 吋 iPad Pro"
+let productColor = "太空灰色"
+let productPrice = 24900
+let productStorage = "128GB"
 
 const productTitle = document.querySelector('.product-title')
 const productTitlePrice = document.querySelector('.product-title-price')
@@ -129,8 +185,8 @@ optionStorage.querySelectorAll('.option-btn').forEach(element => {
 })
 
 function CalculatePrice() {
-  const productSelected = productList.find(item => item["model"] === productModel)['color']
-  productURL = productSelected.find(color => color.name === productColor)['image']
+  const productSelected = productList.find(item => item["model"] === productModel)
+  productURL = productSelected['color'].find(color => color.name === productColor)['image']
   productPrice = productList.find(item => item["model"] === productModel)['price']
   productPrice += productList.find(item => item["model"] === productModel)['storage'].find(item => item['capacity'] === productStorage)['addtionalPrice']
   SetElementText(productTitle, productModel)
