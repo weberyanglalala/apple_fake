@@ -144,7 +144,7 @@ OptionSetting(optionColor)
 DisplayStorages(optionStorage, GenerateOptions(productCategory['storage'], 'capacity'), GenerateOptions(productCategory['storage'], 'addtionalPrice'))
 OptionSetting(optionStorage)
 
-ChangePriceDisplay()
+CalculatePrice()
 
 navToggle.addEventListener('click', () => {
   mainNav.classList.toggle("nav-active")
@@ -153,23 +153,23 @@ optionProduct.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
     productModel = productList.find(item => item["model"] === event.currentTarget.innerHTML)['model']
 
-    ChangePriceDisplay()
+    CalculatePrice()
   })
 })
 optionColor.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
     productColor = event.currentTarget.innerText
-    ChangePriceDisplay()
+    CalculatePrice()
   })
 })
 optionStorage.querySelectorAll('.option-btn').forEach(element => {
   element.addEventListener('click', (event) => {
     productStorage = event.currentTarget.id.slice(8, event.currentTarget.id.length)
-    ChangePriceDisplay()
+    CalculatePrice()
   })
 })
 
-function ChangePriceDisplay() {
+function CalculatePrice() {
   const productSelected = productList.find(item => item["model"] === productModel)['color']
   productURL = productSelected.find(color => color.name === productColor)['image']
   productPrice = productList.find(item => item["model"] === productModel)['price']
