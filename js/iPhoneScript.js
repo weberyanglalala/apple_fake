@@ -227,7 +227,7 @@ function ChangeStoragePrice() {
   const basicPrice = productList.find(item => item["model"] === productModel)['price']
   let addtionalPrices = productList.find(item => item["model"] === productModel)['storage'].map(item => item.addtionalPrice)
   storagePrice.forEach((price, index) => {
-    price.innerText = `NT${basicPrice + addtionalPrices[index]}`
+    price.innerText = `NT$${basicPrice + addtionalPrices[index]}`
   })
 }
 function GetAllSiblings(element) {
